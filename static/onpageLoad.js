@@ -1,6 +1,7 @@
-function pageLoad(){
-	html = 
-	`
+function pageLoad() {
+
+    html =
+        `
 	<div class="col-md-12 p-0">
 	<h4 onclick="showDetails(1)"><i class="fa fa-angle-down" style="font-size:24px;color: white;padding: 2px;"></i> Greeting</h4>
 	<ul class="d-none" id="h4-1">
@@ -42,17 +43,17 @@ function pageLoad(){
 	</ul>
 
 	`
-	$(".side-right").append(html);
+    $(".side-right").append(html);
 
-	html = 
-	`
+    html =
+        `
 		<ul class="list-group">
-			<li  id="home" class="list-group-item active">	<a href="http://localhost:5050/">Home</a></li>
-			<li   id="doctors" class="list-group-item">		<a href="http://localhost:5050/doctors">Doctors</a></li >
+			<li  id="home" class="list-group-item active">	<a href="https://hospital-boy.herokuapp.com/">Home</a></li>
+			<li   id="doctors" class="list-group-item">		<a href="https://hospital-boy.herokuapp.com/doctors">Doctors</a></li >
 			<li id="lab" class="list-group-item">		<a href="http://localhost:5050/lab">Laboratory</a></li>
 			<li  id="instructions" class="list-group-item">		<a href="http://localhost:5050/instructions">Instructions</a></li>
 		</ul>
 	`
-	$(".side-left").append(html);
+    $(".side-left").append(html);
 
 }

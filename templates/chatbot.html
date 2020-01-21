@@ -14,7 +14,6 @@
 	<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}"> -->
 	<link rel="stylesheet" href="../static/styles/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="{{url_for('static',filename='script.js')}}"></script>
 	<script src="{{url_for('static',filename='onpageLoad.js')}}"></script>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -70,6 +69,12 @@
 						  class="button col-md-12 p-1"
 						  value="send"
 						/>
+						<input 
+						  onclick="voiceRecord()"
+						  type="button"
+						  class=""
+						  value="Voice"
+						/>
 					</div>
 				  </form>
 				  </div>
@@ -78,4 +83,6 @@
 	</div>
 	<div id = "side-right" class="side-right col-md-3"></div>
   </body>
+<script src="{{url_for('static',filename='script.js')}}"></script>
+
 </html>

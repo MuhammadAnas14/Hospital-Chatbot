@@ -3,11 +3,50 @@ app = Flask(__name__)
 
 from chatbot import *
 
+import speech_recognition as sr
+import pyttsx3
+
+
+def answer(ques):
+
+    answer = chat(ques)
+
+    return answer
+
+def speechh():     
+    r = sr.Recognizer()
+
+    with sr.Microphone() as source:
+        print("Speak Anything :")
+        audio = r.listen(source)
+        try:
+            text = r.recognize_google(audio)
+            return text
+        except:
+            return "Sorry could not recognize what you said"
+@app.route("/speechToText",methods = ["POST","GET"])
+def speechToText():
+    print("agagagagagagga")
+    x = speechh()
+
+    question = x
+    print("x",x)
+    
+    getAnswer = answer(question)
+    engine = pyttsx3.init() 
+    engine.say(str(getAnswer))
+    engine.runAndWait()
+    return {"ques":question,"ans":getAnswer}
+
+
 @app.route("/send_and_receive", methods=["POST"])
 def send_answer():
     question = request.form['text']
-    answer = chat(question)
-    return answer
+    getAnswer = answer(question)
+    engine = pyttsx3.init() 
+    engine.say(str(getAnswer))
+    engine.runAndWait()
+    return getAnswer
 
 @app.route('/')
 def home():
