@@ -17,19 +17,21 @@ tags_history = []
 appointment = ["You may take appointment from 2pm-4pm Do you want to confirm ?","You may take appointment from 2pm-4pm, confirm it please."]
 available_tests = ["blood","hepatitis","hemoglobin"]
 confirm_words = ["ok","done","yes","confirm"]
+lastNumber = 150
 confirm = False
 recent_doctor = ""
+
 doctors = {
     "psychiatrist" : {
     "timings" : "Mon-Fri 2pm-4pm",
     "appointments" : [],
     },
     "neurologist" : {
-    "timings" : "4pm-8pm",
+    "timings" : "Wed-Fri 4pm-8pm",
     "appointments" : [],
     },
     "general physician" : {
-    "timings" : "4pm-9pm",
+    "timings" : "Sat and Sun 3pm-9pm",
     "appointments" : [],
     }
 }
@@ -133,6 +135,9 @@ def bag_of_words(s, words):
     return numpy.array(bag)
 
 def chat(user_input):
+    user_input = user_input.replace(".","")
+    user_input = user_input.replace("?","")
+    user_input = user_input.replace(",","")
     bag = array([bag_of_words(user_input, words)])
     check_bag = len(list(set(bag[0])))
     results = model.predict(bag)
@@ -147,6 +152,8 @@ def chat(user_input):
     print("tags_history",tags_history)
     print("doctors",doctors)
 
+    if tag == "name" and max_ * 100 > 70 and ":" not in user_input:
+        tags_history.append("name")
 
     if ( len(tags_history) >= 1):
         if tag == "name" and tags_history[len(tags_history) - 1] == "doctor_appointment_reject" and ":" not in user_input:
@@ -164,6 +171,7 @@ def chat(user_input):
 
     global confirm
     global recent_doctor
+    global lastNumber
 
     split_for_name = user_input.split(":")
     string = " "
@@ -179,7 +187,8 @@ def chat(user_input):
 
             if "name" in user_input and len(split_for_name) >= 2 and join_string not in  doctors[recent_doctor]["appointments"] :
                 doctors[recent_doctor]["appointments"].append(join_string)
-                return "Your Appointment is confirmed, to take another appointment follow above instructions to write name." 
+                lastNumber += 1
+                return "Your Appointment is confirmed, Appoinment number = {} </br> To take another appointment follow above instructions to write name.".format(lastNumber)
             elif "name" in user_input and len(split_for_name) >= 2 and join_string in  doctors[recent_doctor]["appointments"] :
                 return "You have already taken an appointmnt please use another name to book your appointment."
         
@@ -211,6 +220,7 @@ def chat(user_input):
     if max_ * 100 < 60:
         return( "Please talk about the relevant topics otherwise you must check your spellings once.!")
 
-    
+    if tag == "asking_doctor_and_timings":
+        return (random.choice(responses).format(doctors["general physician"]["timings"],doctors["neurologist"]["timings"],doctors["psychiatrist"]["timings"]))
     return(random.choice(responses))
 

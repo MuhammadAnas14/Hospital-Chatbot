@@ -9,7 +9,7 @@
 	<style>
 	body{
 		color: white;
-		background-color: blue !important;
+		/* background-color: blue !important; */
 	}
 	table{
 		background-color: #c7444f;
@@ -39,6 +39,48 @@
 		margin-top: 70px !important;
 		text-align: center;
 	}
+	.name{
+		border: 6px solid black;
+		/* background-color:  #c7444f; */
+		background-color: #212121;
+		box-shadow: 1px 3px 20px 1px rgb(34, 34, 34);
+
+		/* line-height: 2px; */
+		left: 400px;
+		top: 300px;
+		height: 240px;
+		z-index: 10000;
+	}
+	.name div{
+		position: relative;
+		top: 10%;
+	}
+	.name h3{
+		font-weight: 600;
+		color: #c7444f;
+	}
+	.name label{
+		font-weight: 600;
+		color: whitesmoke;
+		font-size: 1.5em;
+		width: 40%;
+	}
+	.name input[type="text"]{
+		font-size: 1.18em;
+		width: 320px;
+	}
+	.name p{
+		left: 96%;
+		/* position: absolute; */
+	}
+	.name p:hover{
+		cursor: pointer;
+		color: rgb(83, 83, 83);
+		/* position: absolute; */
+	}
+	.name .button >  input{
+		width: 100%;
+	}
 
 	</style>
 	<link rel="stylesheet" href="../static/styles/main.css">
@@ -49,73 +91,166 @@
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 	<style>
-	#lab a{
-		font-weight: 600;
-		text-decoration: underline;
-	}
-		a:hover{
-		color: white;
-		text-decoration: none;
-	}
-
-	.list-group-item > a{
-		/* font-weight: 600; */
-		text-decoration: none;
-		color: rgb(212, 211, 211);
-
-		display: block;
-		padding: 20px 80px !important;
-		background-color:  rgba(187, 187, 187, 0) !important;
-	}
-		
-		</style>
+		#lab a {
+		  font-weight: 600;
+		  text-decoration: underline;
+		}
+		a:hover {
+		  color: white;
+		  text-decoration: none;
+		}
+  
+		.list-group-item > a {
+		  /* font-weight: 600; */
+		  text-decoration: none;
+		  color: rgb(212, 211, 211);
+  
+		  display: block;
+		  padding: 20px 80px !important;
+		  background-color: rgba(187, 187, 187, 0) !important;
+		}
+	  </style>
 </head>
-<body onload="pageLoad()">
+<body onload="pageLoad()" style="background: #313131;">
 
-	<div id="side-left" class=" col-md-2 p-0 side-left">
-
+	<div
+		id="side-left"
+		class=" col-md-2 p-0 side-left"
+		style="background: #212121;"
+	  ></div>
 	</div>
 	<div class="col-md-7 d-inline-block p-0 ">
 		<h1>Lab tests Datails</h1>
+		<div class="col-md-3 position-relative float-right">
+			<input onclick="open_close()" value="Check Report" type="button">
+		</div>
 		<div class="col-md-10 m-auto">
 			<table cellpadding="15" class="col-md-12">
-				<thead class="text-center head">
-					<th width="1%">S.no</th>
-					<th>Test</th>
-					<th>Price</th>
-					<th>Timings</th>
+				<thead class="text-center head" style="background:rgb(22, 22, 22);">
+				  <th width="1%">S.no</th>
+				  <th>Test</th>
+				  <th>Price</th>
+				  <th>Timings</th>
 				</thead>
-				<tbody class="body">
-					<tr class="">
-						<td >1</td>
-						<td>Blood</td>
-						<td>400</td>
-						<td>2pm-10pm</td>
-					</tr>
-					<tr class="">
-						<td>2</td>
-						<td>Hepatitis</td>
-						<td>800</td>
-						<td>2pm-6pm</td>
-	
-					</tr>
-					<tr class="">
-						<td>3</td>
-						<td>Hemoglobin</td>
-						<td>700</td>
-						<td>5pm-7pm</td>
-					</tr>
+				<tbody class="body" style="background: #212121;">
+				  <tr class="">
+					<td>1</td>
+					<td>MP</td>
+					<td>100/-</td>
+					<td>2pm-10pm</td>
+				  </tr>
+				  <tr class="">
+					<td>2</td>
+					<td>Hepatitis</td>
+					<td>800/-</td>
+					<td>2pm-6pm</td>
+				  </tr>
+				  <tr class="">
+					<td>3</td>
+					<td>Hemoglobin</td>
+					<td>700/-</td>
+					<td>5pm-7pm</td>
+				  </tr>
+				  <tr class="">
+					<td>4</td>
+					<td>CBC</td>
+					<td>750/-</td>
+					<td>4pm-7pm</td>
+				  </tr>
 				</tbody>
-			</table>
+			  </table>
 		</div>
 	</div>	
 
 	<div id ="side-right" class="side-right col-md-3">
 
 	</div>
+	<div  id="name" class="name d-none col-md-4 m-auto position-absolute">
+		<p id="cross"  class="position-absolute ">
+			<i  class="fa fa-close" style="font-size:24px"></i>
+		</p>
+		<h3 class="text-center">Enter Your Name</h3>
+		<div>
+			<label class="d-inline p-2" for="nameInput">Name : </label>
+			<input  class="d-inline " id="nameInput" type="text">
+			<div class="col-md-8  button m-auto">
+				<input onclick="checkReport()" id="submit" class="mt-3" type="button" value="Submit">
+			</div>
+		</div>
+	</div>
+
+	<script>
+
+		var div  = document.getElementById("name");
+		var input = document.getElementById("nameInput");
+		var cross = document.getElementById("cross");
+
+		var userName = ""
+
+		function open_close(){
+			let found = false
+			list = div.classList
+			for(i=0;i<list.length;i++){
+				if(list[i] == "d-none"){
+					found = true
+					div.classList.remove(list[i])
+					console.log("divlist",div.classList)
+				}
+			}
+			if(!found){
+				div.className += " d-none"
+			} 
+			// div.className = " d-none"
+		}
+
+		input.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				checkReport()
+			}
+		});
+		cross.addEventListener("click", function(event) {
+			open_close()()
+		});
+		function checkReport(){
+			userName = input.value
+			$.ajax({
+			url: "/get_report",
+			type: "GET",
+			// data: { text: text }
+			}).done(res=>{
+				let found = false
+				open_close()
+				for(i=0;i<res.reports.length;i++){
+					// console.log("arr",res.reports[i]["name"])
+					if(res.reports[i]["name"] == userName){
+						found  = true
+						// console.log("available")
+						Swal.fire({
+							icon: 'success',
+							title: 'Yes..',
+							text: 'Your Report is in Lab you may  collect it.',
+						})
+					}
+				}
+				if(!found){
+					Swal.fire({
+							icon: 'warning',
+							title: 'No.',
+							text: 'Your report is not ready yet',
+						})
+					// console.log("not available")
+				}
+				input.value = ""
+				// console.log("req msg",res)
+			})
+		}
+
+	</script>
 </body>
 </html>
